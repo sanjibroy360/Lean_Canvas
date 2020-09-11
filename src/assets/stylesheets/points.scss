@@ -1,0 +1,27 @@
+.add_points_form {
+  .text_wrapper {
+    
+    width: 85%;
+    margin: 0 auto;
+    background-color: #ddd;
+    overflow-wrap: break-word;
+  }
+
+  textarea {
+    width: 100%;
+    border: none;
+    outline: 0;
+    resize: none;
+    overflow-wrap: break-word;
+  }
+
+  .input_point {
+    border: 1px solid #777;
+  }
+}
+
+.points_card {
+  width: 85%;
+  margin: 0 auto;
+  padding-left: 6rem;
+}

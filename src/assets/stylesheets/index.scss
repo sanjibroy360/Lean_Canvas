@@ -1,0 +1,29 @@
+@import "./css_reset.scss";
+@import "./lean_canvas_boards.scss";
+@import "./points.scss";
+@import "./media_query.scss";
+
+html,
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+

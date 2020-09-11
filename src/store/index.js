@@ -1,7 +1,15 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, compose } from "redux";
+import problemReducer from "../store/reducers/problem";
+import existingAlternativeReducer from "../store/reducers/alternative";
 
 var rootReducer = combineReducers({
-  key: reducerName,
+  problems: problemReducer,
+  existingAlternative: existingAlternativeReducer,
 });
 
-export const store = createStore(rootReducer);
+const composeEnhancers =
+  (typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+
+export const store = createStore(rootReducer, composeEnhancers());

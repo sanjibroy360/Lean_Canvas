@@ -1,0 +1,18 @@
+@media all and (max-width: 768px) {
+    html, body {
+      font-size: 16px;
+    }
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+      .grid_container {
+        width: 100% !important;
+        .inner_wrapper,
+        .inner_wrapper:last-child {
+          grid-column: 1/12;
+          grid-auto-flow: row;
+        }
+      }
+    }
+  }
+  
