@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ReactMarkdown from "react-markdown";
+import SinglePoint from "./SinglePoint";
+import { Draggable } from "react-beautiful-dnd";
+import { getCardList } from "../../utils";
 
 class AllPoints extends Component {
   constructor(props) {
@@ -12,77 +14,29 @@ class AllPoints extends Component {
     };
   }
 
-  getPoints = (topic, state) => {
-    switch (topic) {
-      case "Problem":
-        return state.problems;
-      case "Existing alternative":
-        return state.existingAlternative;
-      default:
-        return [];
-    }
-  };
-
-  handleInput = (event) => {
-    event.target.style.height = "inherit";
-    event.target.style.height = `${event.target.scrollHeight}px`;
-    let {
-      target: { name, value },
-    } = event;
-    return this.setState({ [name]: value });
-  };
-
-  handlePreview = ({ target: { name, checked } }) => {
-    return this.setState({ [name]: checked });
-  };
-
-  handleEdit = (point) => {
-    console.log(point);
-    this.setState({ editPoint: point, enableEditMode: true });
-  };
-
   render() {
     let { topic, state } = this.props;
-    let { enableEditMode, editPoint, preview } = this.state;
-    let points = this.getPoints(topic, state) || [];
+    let list = getCardList(topic, state);
+    console.log({ list });
     return (
       <>
-        {points.map((point, index) => {
+        {list.map((listItem, index) => {
           return (
-            <>
-              {editPoint && enableEditMode ? (
-                <>
-                  <div className="input_point">
-                    <textarea
-                      name="editPoint"
-                      value={editPoint}
-                      rows="2"
-                      onChange={this.handleInput}
-                      value={point}
-                    ></textarea>
-                    {point.trim() && (
-                      <>
-                        {" "}
-                        <input
-                          type="checkbox"
-                          name="preview"
-                          checked={preview}
-                          //   onClick={this.handlePreview}
-                        />
-                        <span className="small_text">Preview text</span>
-                      </>
-                    )}
-                  </div>
-                </>
-              ) : (
+            <Draggable
+              key={listItem.id}
+              draggableId={listItem.id}
+              index={index}
+            >
+              {(provided, snapshot) => (
                 <div
-                  className="points_card"
-                  onClick={() => this.handleEdit(point)}
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
                 >
-                  <ReactMarkdown source={point} escapeHtml={false} />
+                  <SinglePoint pointInfo={listItem} />
                 </div>
               )}
-            </>
+            </Draggable>
           );
         })}
       </>

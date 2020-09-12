@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addProblem } from "../../store/action";
+import { addPoint } from "../../store/action";
 import ReactMarkdown from "react-markdown";
+import uuid from "uuid/v4";
 
 class AddPoints extends Component {
   constructor(props) {
@@ -27,9 +28,23 @@ class AddPoints extends Component {
 
   handleSubmit = (event, topic) => {
     let { point } = this.state;
+    point = point.trim();
     topic = topic.toLowerCase();
+    let payload = {
+      id: uuid(),
+      point,
+      topic,
+    };
+    if (point) {
+      this.setState({ point: "", preview: false });
+      this.props.closeInputBox();
+      return addPoint(payload, this.props.dispatch);
+    }
+  };
+
+  closeInputBox = () => {
     this.setState({ point: "", preview: false });
-    return addProblem(point, topic, this.props.dispatch);
+    return this.props.closeInputBox();
   };
   render() {
     let { point, preview } = this.state;
@@ -37,16 +52,16 @@ class AddPoints extends Component {
     return (
       <div className="add_points_form">
         {preview ? (
-          <p className="text_wrapper">
+          <div className="text_wrapper">
             <ReactMarkdown source={point} escapeHtml={false} />
             <input
               type="checkbox"
               name="preview"
               checked={preview}
-              onClick={this.handlePreview}
+              onChange={this.handlePreview}
             />
             <span className="small_text">Preview text</span>
-          </p>
+          </div>
         ) : (
           <div className="input_point">
             <textarea
@@ -57,12 +72,11 @@ class AddPoints extends Component {
             ></textarea>
             {point.trim() && (
               <>
-                {" "}
                 <input
                   type="checkbox"
                   name="preview"
                   checked={preview}
-                  onClick={this.handlePreview}
+                  onChange={this.handlePreview}
                 />
                 <span className="small_text">Preview text</span>
               </>
@@ -70,21 +84,19 @@ class AddPoints extends Component {
           </div>
         )}
 
-        <button
-          type="submit"
-          onClick={(event) => this.handleSubmit(event, topic)}
-          className="btn"
-        >
-          Add
-        </button>
+        <div className="btn_wrapper">
+          <button
+            type="submit"
+            onClick={(event) => this.handleSubmit(event, topic)}
+            className="btn save_btn"
+          >
+            Add
+          </button>
 
-        <button
-          type="submit"
-          onClick={(event) => this.handleSubmit(event, topic)}
-          className="btn"
-        >
-          X
-        </button>
+          <button onClick={this.closeInputBox} className="btn cancel_btn">
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
       </div>
     );
   }

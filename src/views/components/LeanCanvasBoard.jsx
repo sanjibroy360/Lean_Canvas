@@ -1,7 +1,25 @@
 import React, { Component } from "react";
-import Card from "./Card";
+import SingleTopic from "./SingleTopic";
+import { connect } from "react-redux";
+import { DragDropContext, Draggable, Dropable } from "react-beautiful-dnd";
+import { getCardList } from "../../utils";
+import { reorderPoints } from "../../store/action";
 
 class LeanCanvasBoard extends Component {
+  reorderCards = (list, topic, sourceIndex, destIndex) => {
+    console.log({ list, sourceIndex, destIndex });
+    let card = list.splice(sourceIndex, 1)[0];
+    list.splice(destIndex, 0, card);
+    console.log(list);
+    return reorderPoints(list, topic, this.props.dispatch);
+  };
+  onDragEnd = (response) => {
+    let topic = response.source.droppableId;
+    let sourceIndex = response.source.index;
+    let destIndex = response.destination.index;
+    let list = getCardList(topic, this.props.state);
+    return this.reorderCards(list, topic, sourceIndex, destIndex);
+  };
   render() {
     let challenges = [
       ["Problem", "Existing alternative"],
@@ -14,19 +32,25 @@ class LeanCanvasBoard extends Component {
 
     return (
       <div className="container">
-        <ul className="grid_container" key="wrapper">
-          {challenges.map((topic, collumnNo) => {
-            return (
-              <li className="inner_wrapper" key={`${collumnNo}`}>
-                <Card title={topic[0]} key={`${topic[0]}card`} />
-                <Card title={topic[1]} key={`${topic[1]}card`} />
-              </li>
-            );
-          })}
-        </ul>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <ul className="grid_container" key="wrapper">
+            {challenges.map((topic, collumnNo) => {
+              return (
+                <li className="inner_wrapper" key={`${collumnNo}`}>
+                  <SingleTopic title={topic[0]} key={`${topic[0]}card`} />
+                  <SingleTopic title={topic[1]} key={`${topic[1]}card`} />
+                </li>
+              );
+            })}
+          </ul>
+        </DragDropContext>
       </div>
     );
   }
 }
 
-export default LeanCanvasBoard;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps)(LeanCanvasBoard);

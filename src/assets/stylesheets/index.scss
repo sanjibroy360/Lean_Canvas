@@ -2,11 +2,13 @@
 @import "./lean_canvas_boards.scss";
 @import "./points.scss";
 @import "./media_query.scss";
+@import "./card.scss";
 
 html,
 body {
   font-size: 16px;
   line-height: 1.5;
+  background-color: #ccc;
 }
 
 *,
@@ -19,6 +21,12 @@ a,
 button {
   cursor: pointer;
   text-decoration: none;
+  outline: 0;
+}
+
+input,
+textarea {
+  outline: 0;
 }
 
 .container {
@@ -26,4 +34,22 @@ button {
   margin: 0 auto;
 }
 
+code {
+  background-color: rgb(221, 221, 221);
+  padding: 0.375rem 0.75rem;
+}
 
+.btn {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-weight: 600;
+}
+
+.save_btn {
+  background-color: green;
+  color: #fff;
+}
+.cancel_btn {
+  background-color: #fff;
+}

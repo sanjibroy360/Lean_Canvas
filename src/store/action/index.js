@@ -1,7 +1,23 @@
-export function addProblem(point, topic, dispatch) {
-  let type = "ADD_" + topic.toUpperCase().split(" ").join("_");
+export function addPoint(payload, dispatch) {
+  let type = "ADD_" + payload.topic.toUpperCase().split(" ").join("_");
   return dispatch({
     type,
-    payload: point,
+    payload,
+  });
+}
+
+export function editPoint(payload, dispatch) {
+  let type = "EDIT_" + payload.topic.toUpperCase().split(" ").join("_");
+  return dispatch({
+    type,
+    payload,
+  });
+}
+
+export function reorderPoints(payload, topic, dispatch) {
+  let type = "REORDER_" + topic.toUpperCase().split(" ").join("_");
+  return dispatch({
+    type,
+    payload,
   });
 }
