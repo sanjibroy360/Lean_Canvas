@@ -1,0 +1,72 @@
+.grid_container {
+  .inner_wrapper:nth-child(1) {
+    background-color: rgb(143, 91, 181);
+    .card {
+      background-color: #ce93d8;
+      color: #fff;
+    }
+  }
+
+  .inner_wrapper:nth-child(2) {
+    .box3 {
+      background-color: rgb(254, 155, 63) !important;
+      .card {
+        background-color: #ffe0b2;
+        color: maroon;
+      }
+    }
+
+    .box4 {
+      background-color: #ef6c00 !important;
+      .card {
+          background-color: #ffcc80;
+          
+      }
+    }
+  }
+
+  .inner_wrapper:nth-child(3) {
+    background-color: rgb(69, 174, 71) !important;
+    .card {
+      background-color: #aed581;
+    }
+  }
+
+  .inner_wrapper:nth-child(4) {
+    .box7 {
+      background-color: #388e3c !important;
+      .card {
+        background-color: #81c784;
+      }
+    }
+    .box8 {
+      background-color: rgb(54, 185, 168) !important;
+      .card {
+        background-color: #bbdefb;
+      }
+    }
+  }
+
+  .inner_wrapper:nth-child(5) {
+    background-color: #009688 !important;
+    .card {
+      background-color: #b2dfdb;
+    }
+  }
+
+  .inner_wrapper:nth-child(6) {
+    .box11 {
+      background-color: rgb(94, 98, 205) !important;
+      .card {
+        background-color: #b39ddb;
+        color:#000
+      }
+    }
+    .box12 {
+      background-color: rgb(107, 88, 183) !important;
+      .card {
+          background-color: #e1bee7;
+      }
+    }
+  }
+}

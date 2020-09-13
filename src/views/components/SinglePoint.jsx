@@ -54,7 +54,7 @@ class SinglePoint extends Component {
         {enableEditMode ? (
           <>
             {preview ? (
-              <div className="text_wrapper">
+              <div className="card preview_text">
                 <ReactMarkdown source={editPoint} escapeHtml={false} />
                 <input
                   type="checkbox"
@@ -70,7 +70,7 @@ class SinglePoint extends Component {
                   <textarea
                     name="editPoint"
                     value={editPoint}
-                    rows="4"
+                    rows="3"
                     onChange={this.handleInput}
                   ></textarea>
                   {pointInfo.point.trim() && (
@@ -84,23 +84,24 @@ class SinglePoint extends Component {
                       <span className="small_text">Preview text</span>
                     </>
                   )}
-                </div>
-                <div className="btn_wrapper">
-                  <button
-                    type="submit"
-                    onClick={(event) => this.handleSubmit(event, pointInfo)}
-                    className="btn save_btn"
-                  >
-                    Add
-                  </button>
 
-                  <button
-                    type="submit"
-                    onClick={this.closeInputBox}
-                    className="btn cancel_btn"
-                  >
-                    <i className="fas fa-times"></i>
-                  </button>
+                  <div className="btn_wrapper">
+                    <button
+                      type="submit"
+                      onClick={(event) => this.handleSubmit(event, pointInfo)}
+                      className="btn save_btn"
+                    >
+                      Add
+                    </button>
+
+                    <button
+                      type="submit"
+                      onClick={this.closeInputBox}
+                      className="btn cancel_btn"
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
                 </div>
               </>
             )}
