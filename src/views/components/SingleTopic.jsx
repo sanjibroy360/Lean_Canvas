@@ -17,23 +17,24 @@ class SingleTopic extends Component {
   };
 
   render() {
-    let { title } = this.props;
+    let { topic } = this.props;
+    let {topicName, topicId} = topic;
     let { isAddingPoints } = this.state;
     return (
-      <Droppable droppableId={title}>
+      <Droppable droppableId={topic.topicId}>
         {(provided, snapshot) => (
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
             className="topic"
-            key={title}
+            key={topicName+topicId}
           >
-            <p className="title" key={title + 1}>
-              {title}
+            <p className="title" key={topicId + 1}>
+              {topicName}
             </p>
-            <AllPoints topic={title} />
+            <AllPoints topic={topic} />
             {isAddingPoints ? (
-              <AddPoints topic={title} closeInputBox={this.handleInputTaking} />
+              <AddPoints topic={topic} closeInputBox={this.handleInputTaking} />
             ) : (
               <button onClick={this.handleInputTaking}>
                 <i className="fa fa-plus-circle"></i> Add card

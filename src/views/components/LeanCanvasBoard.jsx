@@ -2,42 +2,48 @@ import React, { Component } from "react";
 import SingleTopic from "./SingleTopic";
 import { connect } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
-import { getCardList } from "../../utils";
 import { reorderPoints } from "../../store/action";
 
 class LeanCanvasBoard extends Component {
-  reorder = (list, topic, sourceIndex, destIndex) => {
-    let card = list.splice(sourceIndex, 1)[0];
-    list.splice(destIndex, 0, card);
-    return reorderPoints(list, topic, this.props.dispatch);
+  reorder = (list, sourceIndex, destIndex) => {
+    let card = list.points.splice(sourceIndex, 1)[0];
+    list.points.splice(destIndex, 0, card);
+    return reorderPoints(list, this.props.dispatch);
   };
   onDragEnd = (response) => {
-    let topic = response.source.droppableId;
+    let { topics } = this.props;
+    let { droppableId } = response.source;
     let sourceIndex = response.source.index;
     let destIndex = response.destination.index;
-    let list = getCardList(topic, this.props.state);
-    return this.reorder(list, topic, sourceIndex, destIndex);
+    let list = topics.filter((topic) => topic.topicId === droppableId)[0];
+    console.log(response);
+    return this.reorder(list, sourceIndex, destIndex);
   };
   render() {
-    let challenges = [
-      ["Problem", "Existing alternative"],
-      ["Solution", "Key Metrics"],
-      ["Unique value proposition", "High-Level concept"],
-      ["Unfair advantage", "Channels"],
-      ["Customer segment", "Early addopters"],
-      ["Cost structure", "Revenue streams"],
-    ];
+    let { topics } = this.props;
 
     return (
       <div className="container">
         <DragDropContext onDragEnd={this.onDragEnd}>
           <ul className="grid_container" key="wrapper">
-            {challenges.map((topic, collumnNo) => {
+            {topics.map((topic, collumnNo) => {
               return (
-                <li className="inner_wrapper" key={`${collumnNo}`}>
-                  <SingleTopic title={topic[0]} key={`${topic[0]}card`} />
-                  <SingleTopic title={topic[1]} key={`${topic[1]}card`} />
-                </li>
+                <React.Fragment key={topic.topicId+collumnNo}>
+                  {!(collumnNo % 2) ? (
+                    <li className="inner_wrapper" key={`${collumnNo}`}>
+                      <SingleTopic
+                        topic={topics[collumnNo]}
+                        key={`${topic.topicId}card`}
+                      />
+                      <SingleTopic
+                        topic={topics[collumnNo + 1]}
+                        key={`${topic.topicId + 1}card`}
+                      />
+                    </li>
+                  ) : (
+                    <></>
+                  )}
+                </React.Fragment>
               );
             })}
           </ul>
@@ -47,8 +53,8 @@ class LeanCanvasBoard extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { state };
+function mapStateToProps({ topics }) {
+  return { topics };
 }
 
 export default connect(mapStateToProps)(LeanCanvasBoard);

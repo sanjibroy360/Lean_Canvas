@@ -26,14 +26,13 @@ class AddPoints extends Component {
     return this.setState({ [name]: checked });
   };
 
-  handleSubmit = (event, topic) => {
+  handleSubmit = (event) => {
     let { point } = this.state;
     point = point.trim();
-    topic = topic.toLowerCase();
     let payload = {
-      id: uuid(),
+      pointId: uuid(),
       point,
-      topic,
+      topicId: this.props.topic.topicId,
     };
     if (point) {
       this.setState({ point: "", preview: false });

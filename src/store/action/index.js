@@ -1,31 +1,42 @@
-export function addPoint(payload, dispatch) {
-  let type = "ADD_" + payload.topic.toUpperCase().split(" ").join("_");
+import {
+  ADD_TOPICS,
+  ADD_POINT,
+  EDIT_POINT,
+  REORDER_POINTS,
+  DELETE_POINT,
+} from "./types";
+
+export function addTopics(payload, dispatch) {
   return dispatch({
-    type,
+    type: ADD_TOPICS,
+    payload,
+  });
+}
+
+export function addPoint(payload, dispatch) {
+  return dispatch({
+    type: ADD_POINT,
     payload,
   });
 }
 
 export function editPoint(payload, dispatch) {
-  let type = "EDIT_" + payload.topic.toUpperCase().split(" ").join("_");
   return dispatch({
-    type,
+    type: EDIT_POINT,
     payload,
   });
 }
 
-export function reorderPoints(payload, topic, dispatch) {
-  let type = "REORDER_" + topic.toUpperCase().split(" ").join("_");
+export function reorderPoints(payload, dispatch) {
   return dispatch({
-    type,
+    type: REORDER_POINTS,
     payload,
   });
 }
 
 export function deletePoint(payload, dispatch) {
-  let type = "DELETE_" + payload.topic.toUpperCase().split(" ").join("_");
   return dispatch({
-    type,
+    type: DELETE_POINT,
     payload,
   });
 }

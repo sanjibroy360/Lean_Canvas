@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SinglePoint from "./SinglePoint";
 import { Draggable } from "react-beautiful-dnd";
-import { getCardList } from "../../utils";
+
 
 class AllPoints extends Component {
   constructor(props) {
@@ -15,16 +15,15 @@ class AllPoints extends Component {
   }
 
   render() {
-    let { topic, state } = this.props;
-    let list = getCardList(topic, state);
-    console.log({ list });
+    let { topic} = this.props;
+    
     return (
       <>
-        {list.map((listItem, index) => {
+        {topic.points.map((listItem, index) => {
           return (
             <Draggable
               key={listItem.id}
-              draggableId={listItem.id}
+              draggableId={listItem.pointId}
               index={index}
             >
               {(provided, snapshot) => (
