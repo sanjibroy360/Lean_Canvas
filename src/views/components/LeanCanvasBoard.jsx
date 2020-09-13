@@ -28,15 +28,17 @@ class LeanCanvasBoard extends Component {
           <ul className="grid_container" key="wrapper">
             {topics.map((topic, collumnNo) => {
               return (
-                <React.Fragment key={topic.topicId+collumnNo}>
+                <React.Fragment key={topic.topicId + collumnNo}>
                   {!(collumnNo % 2) ? (
                     <li className="inner_wrapper" key={`${collumnNo}`}>
                       <SingleTopic
                         topic={topics[collumnNo]}
                         key={`${topic.topicId}card`}
+                        boxNo={collumnNo + 1}
                       />
                       <SingleTopic
                         topic={topics[collumnNo + 1]}
+                        boxNo={collumnNo + 2}
                         key={`${topic.topicId + 1}card`}
                       />
                     </li>

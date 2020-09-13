@@ -51,7 +51,7 @@ class AddPoints extends Component {
     return (
       <div className="add_points_form">
         {preview ? (
-          <div className="text_wrapper">
+          <div>
             <ReactMarkdown source={point} escapeHtml={false} />
             <input
               type="checkbox"

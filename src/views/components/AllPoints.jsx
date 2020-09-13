@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import SinglePoint from "./SinglePoint";
 import { Draggable } from "react-beautiful-dnd";
 
-
 class AllPoints extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +14,8 @@ class AllPoints extends Component {
   }
 
   render() {
-    let { topic} = this.props;
-    
+    let { topic } = this.props;
+
     return (
       <>
         {topic.points.map((listItem, index) => {
