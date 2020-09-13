@@ -1,16 +1,17 @@
 import {
-  ADD_PROBLEM,
-  EDIT_PROBLEM,
-  REORDER_PROBLEM,
-  DELETE_PROBLEM,
+  ADD_UNFAIR_ADVANTAGE,
+  EDIT_UNFAIR_ADVANTAGE,
+  REORDER_UNFAIR_ADVANTAGE,
+  DELETE_UNFAIR_ADVANTAGE,
 } from "../action/types";
+
 let initialState = [];
 
-function problemReducer(state = initialState, action) {
+function unfairAdvantageReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_PROBLEM:
+    case ADD_UNFAIR_ADVANTAGE:
       return [...state, action.payload];
-    case EDIT_PROBLEM:
+    case EDIT_UNFAIR_ADVANTAGE:
       state = state.map((point) => {
         if (point.id === action.payload.id) {
           return action.payload;
@@ -19,14 +20,14 @@ function problemReducer(state = initialState, action) {
       });
       return [...state];
 
-    case REORDER_PROBLEM:
+    case REORDER_UNFAIR_ADVANTAGE:
       return [...action.payload];
 
-    case DELETE_PROBLEM:
+    case DELETE_UNFAIR_ADVANTAGE:
       return state.filter((topic) => topic.id !== action.payload.id);
     default:
       return state;
   }
 }
 
-export default problemReducer;
+export default unfairAdvantageReducer;

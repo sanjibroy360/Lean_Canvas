@@ -1,29 +1,33 @@
+// KEY_METRICS
 import {
-  ADD_EXISTING_ALTERNATIVE,
-  EDIT_EXISTING_ALTERNATIVE,
-  REORDER_EXISTING_ALTERNATIVE,
+  ADD_KEY_METRICS,
+  EDIT_KEY_METRICS,
+  REORDER_KEY_METRICS,
+  DELETE_KEY_METRICS,
 } from "../action/types";
 let initialState = [];
 
-function existingAlternativeReducer(state = initialState, action) {
+function keyMetricsReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_EXISTING_ALTERNATIVE:
+    case ADD_KEY_METRICS:
       return [...state, action.payload];
-    case EDIT_EXISTING_ALTERNATIVE:
+    case EDIT_KEY_METRICS:
       state = state.map((point) => {
         if (point.id === action.payload.id) {
           return action.payload;
         }
         return point;
       });
-      console.log({ state });
       return [...state];
 
-    case REORDER_EXISTING_ALTERNATIVE:
+    case REORDER_KEY_METRICS:
       return [...action.payload];
+
+    case DELETE_KEY_METRICS:
+      return state.filter((topic) => topic.id !== action.payload.id);
     default:
       return state;
   }
 }
 
-export default existingAlternativeReducer;
+export default keyMetricsReducer;

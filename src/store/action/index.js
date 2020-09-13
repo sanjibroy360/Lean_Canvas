@@ -21,3 +21,11 @@ export function reorderPoints(payload, topic, dispatch) {
     payload,
   });
 }
+
+export function deletePoint(payload, dispatch) {
+  let type = "DELETE_" + payload.topic.toUpperCase().split(" ").join("_");
+  return dispatch({
+    type,
+    payload,
+  });
+}

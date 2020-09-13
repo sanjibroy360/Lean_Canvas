@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactMarkdown from "react-markdown";
 
-import { editPoint } from "../../store/action";
+import { editPoint, deletePoint } from "../../store/action";
 import { connect } from "react-redux";
 
 class SinglePoint extends Component {
@@ -32,9 +32,18 @@ class SinglePoint extends Component {
     return editPoint(payload, this.props.dispatch);
   };
 
-  handleEditMode = (payload) => {
+  handleEditMode = (event, payload) => {
     let { point } = payload;
+    console.log(payload);
     this.setState({ editPoint: point, enableEditMode: true });
+  };
+
+  handleDelete = (event, payload) => {
+    return deletePoint(payload, this.props.dispatch);
+  };
+
+  closeInputBox = () => {
+    return this.setState({ editPoint: "", enableEditMode: false });
   };
 
   render() {
@@ -87,7 +96,7 @@ class SinglePoint extends Component {
 
                   <button
                     type="submit"
-                    onClick={(event) => this.handleSubmit(event, pointInfo)}
+                    onClick={this.closeInputBox}
                     className="btn cancel_btn"
                   >
                     <i className="fas fa-times"></i>
@@ -106,10 +115,14 @@ class SinglePoint extends Component {
               </div>
               <div>
                 <nobr>
-                  <button onClick={() => this.handleEditMode(pointInfo)}>
+                  <button
+                    onClick={(event) => this.handleEditMode(event, pointInfo)}
+                  >
                     <i className="far fa-edit edit_point"></i>
                   </button>
-                  <button>
+                  <button
+                    onClick={(event) => this.handleDelete(event, pointInfo)}
+                  >
                     <i className="fas fa-trash-alt delete_point"></i>
                   </button>
                 </nobr>

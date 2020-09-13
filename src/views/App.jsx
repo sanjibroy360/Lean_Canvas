@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import LeanCanvasBoard from "./components/LeanCanvasBoard";
 
+
 class App extends Component {
-    render() {
-        return (
-            <>
-              <LeanCanvasBoard/>
-            </>
-        );
-    }
+  
+  render() {
+    return (
+      <>
+        <LeanCanvasBoard />
+      </>
+    );
+  }
 }
 
 export default App;

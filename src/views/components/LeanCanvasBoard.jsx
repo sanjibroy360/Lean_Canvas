@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import SingleTopic from "./SingleTopic";
 import { connect } from "react-redux";
-import { DragDropContext, Draggable, Dropable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import { getCardList } from "../../utils";
 import { reorderPoints } from "../../store/action";
 
 class LeanCanvasBoard extends Component {
-  reorderCards = (list, topic, sourceIndex, destIndex) => {
-    console.log({ list, sourceIndex, destIndex });
+  reorder = (list, topic, sourceIndex, destIndex) => {
     let card = list.splice(sourceIndex, 1)[0];
     list.splice(destIndex, 0, card);
-    console.log(list);
     return reorderPoints(list, topic, this.props.dispatch);
   };
   onDragEnd = (response) => {
@@ -18,7 +16,7 @@ class LeanCanvasBoard extends Component {
     let sourceIndex = response.source.index;
     let destIndex = response.destination.index;
     let list = getCardList(topic, this.props.state);
-    return this.reorderCards(list, topic, sourceIndex, destIndex);
+    return this.reorder(list, topic, sourceIndex, destIndex);
   };
   render() {
     let challenges = [
