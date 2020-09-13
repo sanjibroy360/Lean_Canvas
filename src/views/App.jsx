@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LeanCanvasBoard from "./components/LeanCanvasBoard";
 import {connect} from "react-redux";
-import uuid from "uuid/v4";
+import uuid from "react-uuid";
 import {addTopics} from "../store/action";
 
 class App extends Component {
