@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPoint } from "../../store/action";
 import ReactMarkdown from "react-markdown";
-import uuid from "uuid/v4";
+import uuid from "react-uuid";
 
 class AddPoints extends Component {
   constructor(props) {
