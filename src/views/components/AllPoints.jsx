@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SinglePoint from "./SinglePoint";
-import { Draggable } from "react-beautiful-dnd";
+import DraggableCards from "./BuildMode/DraggableCards";
 
 class AllPoints extends Component {
   constructor(props) {
@@ -14,27 +14,26 @@ class AllPoints extends Component {
   }
 
   render() {
-    let { topic } = this.props;
+    let { topic, state } = this.props;
+    let { enablePresentationMode } = state;
 
     return (
       <>
-        {topic.points.map((listItem, index) => {
+        {topic.points.map((point, index) => {
           return (
-            <Draggable
-              key={listItem.id}
-              draggableId={listItem.pointId}
-              index={index}
-            >
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  <SinglePoint pointInfo={listItem} />
-                </div>
+            <>
+              {enablePresentationMode ? (
+                <>
+                  {" "}
+                  <SinglePoint pointInfo={point} />
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <DraggableCards point={point} index={index} />
+                </>
               )}
-            </Draggable>
+            </>
           );
         })}
       </>

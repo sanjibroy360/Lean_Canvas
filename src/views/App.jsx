@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import LeanCanvasBoard from "./components/LeanCanvasBoard";
-import {connect} from "react-redux";
+import LeanCanvasBoard from "./LeanCanvas/LeanCanvasBoard";
+import { connect } from "react-redux";
 import uuid from "react-uuid";
-import {addTopics} from "../store/action";
+import { addTopics } from "../store/action";
+import Home from "./HomePage/Home";
 
 class App extends Component {
   componentDidMount() {
-    
     let topics = [
       "Problem",
       "Existing alternative",
@@ -28,12 +28,13 @@ class App extends Component {
         points: [],
       };
     });
-    
+
     return addTopics(payload, this.props.dispatch);
   }
   render() {
     return (
       <>
+        <Home />
         <LeanCanvasBoard />
       </>
     );
@@ -41,7 +42,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    return {state};
+  return { state };
 }
 
 export default connect(mapStateToProps)(App);

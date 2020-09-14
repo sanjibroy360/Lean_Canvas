@@ -1,0 +1,26 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-shadow: none;
+
+  .hero_text {
+    color: rgba(8,8,8,0.92);
+    p {
+      font-size: 1.125rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0rem;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      line-height: 1.7;
+    }
+  }
+}

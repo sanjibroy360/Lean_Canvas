@@ -4,6 +4,7 @@ import {
   EDIT_POINT,
   REORDER_POINTS,
   DELETE_POINT,
+  TOGGLE_PRESENTATION_MODE
 } from "./types";
 
 export function addTopics(payload, dispatch) {
@@ -39,4 +40,11 @@ export function deletePoint(payload, dispatch) {
     type: DELETE_POINT,
     payload,
   });
+}
+
+export function togglePresentationMode(payload, dispatch) {
+  return dispatch({
+    type: TOGGLE_PRESENTATION_MODE,
+    payload
+  })
 }

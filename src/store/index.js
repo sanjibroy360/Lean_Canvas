@@ -6,12 +6,14 @@ import {
   EDIT_POINT,
   REORDER_POINTS,
   DELETE_POINT,
+  TOGGLE_PRESENTATION_MODE
 } from "./action/types";
 
 let initialState = {
   projectName: "",
   date: "",
   topics: [],
+  enablePresentationMode: false
 };
 
 function reducer(state = initialState, action) {
@@ -61,6 +63,12 @@ function reducer(state = initialState, action) {
         return topic;
       });
       return { ...state };
+
+    case TOGGLE_PRESENTATION_MODE:
+      if(typeof action.payload == "boolean") {
+        state.enablePresentationMode = action.payload;
+      }
+      return {...state};
 
     default:
       return state;

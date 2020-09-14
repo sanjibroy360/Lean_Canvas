@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPoint } from "../../store/action";
-import ReactMarkdown from "react-markdown";
 import uuid from "react-uuid";
+import InputBox from "./InputBox";
+import Preview from "./Preview";
 
 class AddPoints extends Component {
   constructor(props) {
@@ -51,51 +52,23 @@ class AddPoints extends Component {
     return (
       <div className="add_points_form">
         {preview ? (
-          <div>
-            <ReactMarkdown source={point} escapeHtml={false} />
-            <input
-              type="checkbox"
-              name="preview"
-              checked={preview}
-              onChange={this.handlePreview}
-            />
-            <span className="small_text">Preview text</span>
-          </div>
+          <Preview
+            source={point}
+            enablePreview={preview}
+            handlePreview={this.handlePreview}
+          />
         ) : (
-          <div className="input_point">
-            <textarea
-              name="point"
-              rows="2"
-              onChange={this.handleInput}
-              value={point}
-            ></textarea>
-            {point.trim() && (
-              <>
-                <input
-                  type="checkbox"
-                  name="preview"
-                  checked={preview}
-                  onChange={this.handlePreview}
-                />
-                <span className="small_text">Preview text</span>
-              </>
-            )}
-          </div>
+          <InputBox
+            textareaName={"point"}
+            value={point}
+            enablePreview={preview}
+            handleInput={this.handleInput}
+            handlePreview={this.handlePreview}
+            closeInputBox={this.closeInputBox}
+            handleSubmit={this.handleSubmit}
+            pointInfo={topic}
+          />
         )}
-
-        <div className="btn_wrapper">
-          <button
-            type="submit"
-            onClick={(event) => this.handleSubmit(event, topic)}
-            className="btn save_btn"
-          >
-            Add
-          </button>
-
-          <button onClick={this.closeInputBox} className="btn cancel_btn">
-            <i className="fas fa-times"></i>
-          </button>
-        </div>
       </div>
     );
   }
