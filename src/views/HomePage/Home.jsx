@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import heroImage from "../../assets/media/images/img.png";
+import banner from "../../assets/media/images/banner.png";
 import { Button, Icon } from "semantic-ui-react";
 
 class Home extends Component {
@@ -26,7 +26,7 @@ class Home extends Component {
             </Button>
           </div>
           <div className="hero_image">
-            <img src={heroImage} alt="" />
+            <img src={banner} alt="" />
           </div>
         </div>
       </div>
