@@ -1,12 +1,14 @@
 @import "./css_reset.scss";
+@import "./home.scss";
 @import "./lean_canvas_boards.scss";
 @import "./points.scss";
-@import "./media_query.scss";
 @import "./card.scss";
 @import "./box_colors.scss";
+@import "./media_query.scss";
 
 html,
 body {
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   background-color: rgba(245,245,245,0.5);

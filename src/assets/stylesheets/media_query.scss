@@ -1,18 +1,28 @@
 @media all and (max-width: 768px) {
-    html, body {
-      font-size: 16px;
-    }
-    .container {
-      max-width: 768px;
-      margin: 0 auto;
-      .grid_container {
-        width: 100% !important;
-        .inner_wrapper,
-        .inner_wrapper:last-child {
-          grid-column: 1/12;
-          grid-auto-flow: row;
-        }
+  html,
+  body {
+    font-size: 10px;
+  }
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+    .grid_container {
+      width: 100% !important;
+      grid-template-columns: 1fr;
+      padding: 0.75rem;
+      .inner_wrapper,
+      .inner_wrapper:last-child {
+        grid-column: 1/12;
+        grid-auto-flow: row;
       }
     }
+    .canvas_header {
+      .toggle_btn {
+        flex-basis: 60%;
+      }
+    }
+    .view {
+      display: none;
+    }
   }
-  
+}

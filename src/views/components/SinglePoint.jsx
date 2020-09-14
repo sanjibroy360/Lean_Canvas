@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ReactMarkdown from "react-markdown";
-
 import { editPoint, deletePoint } from "../../store/action";
 import { connect } from "react-redux";
+import InputBox from "./InputBox";
+import Preview from "./Preview";
 
 class SinglePoint extends Component {
   constructor(props) {
@@ -34,7 +35,8 @@ class SinglePoint extends Component {
 
   handleEditMode = (event, payload) => {
     let { point } = payload;
-    console.log(payload);
+    let { enablePresentaionMode } = this.props;
+    // if (enablePresentaionMode && point)
     this.setState({ editPoint: point, enableEditMode: true });
   };
 
@@ -48,61 +50,29 @@ class SinglePoint extends Component {
 
   render() {
     let { enableEditMode, editPoint, preview } = this.state;
-    let { pointInfo } = this.props;
+    let { pointInfo, enablePresentationMode } = this.props;
     return (
       <div>
-        {enableEditMode ? (
+        {enableEditMode && !enablePresentationMode ? (
           <>
             {preview ? (
-              <div className="card preview_text">
-                <ReactMarkdown source={editPoint} escapeHtml={false} />
-                <input
-                  type="checkbox"
-                  name="preview"
-                  checked={preview}
-                  onChange={this.handlePreview}
-                />
-                <span className="small_text">Preview text</span>
-              </div>
+              <Preview
+                source={editPoint}
+                enablePreview={preview}
+                handlePreview={this.handlePreview}
+              />
             ) : (
               <>
-                <div className="input_point">
-                  <textarea
-                    name="editPoint"
-                    value={editPoint}
-                    rows="3"
-                    onChange={this.handleInput}
-                  ></textarea>
-                  {pointInfo.point.trim() && (
-                    <>
-                      <input
-                        type="checkbox"
-                        name="preview"
-                        checked={preview}
-                        onClick={this.handlePreview}
-                      />
-                      <span className="small_text">Preview text</span>
-                    </>
-                  )}
-
-                  <div className="btn_wrapper">
-                    <button
-                      type="submit"
-                      onClick={(event) => this.handleSubmit(event, pointInfo)}
-                      className="btn save_btn"
-                    >
-                      Add
-                    </button>
-
-                    <button
-                      type="submit"
-                      onClick={this.closeInputBox}
-                      className="btn cancel_btn"
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
+                <InputBox
+                  textareaName={"editPoint"}
+                  value={editPoint}
+                  enablePreview={preview}
+                  handleInput={this.handleInput}
+                  handlePreview={this.handlePreview}
+                  closeInputBox={this.closeInputBox}
+                  handleSubmit={this.handleSubmit}
+                  pointInfo={pointInfo}
+                />
               </>
             )}
           </>
@@ -114,20 +84,23 @@ class SinglePoint extends Component {
                   {pointInfo.point}
                 </ReactMarkdown>
               </div>
-              <div>
+              {!enablePresentationMode && (
                 <nobr>
-                  <button
-                    onClick={(event) => this.handleEditMode(event, pointInfo)}
-                  >
-                    <i className="far fa-edit edit_point"></i>
-                  </button>
-                  <button
-                    onClick={(event) => this.handleDelete(event, pointInfo)}
-                  >
-                    <i className="fas fa-trash-alt delete_point"></i>
-                  </button>
+                  <div className="btns">
+                    <button
+                      onClick={(event) => this.handleEditMode(event, pointInfo)}
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={(event) => this.handleDelete(event, pointInfo)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </nobr>
-              </div>
+              )}
             </div>
           </div>
         )}
@@ -136,8 +109,8 @@ class SinglePoint extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { state };
+function mapStateToProps({ enablePresentationMode }) {
+  return { enablePresentationMode };
 }
 
 export default connect(mapStateToProps)(SinglePoint);

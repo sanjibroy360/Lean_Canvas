@@ -1,6 +1,4 @@
 .add_points_form {
-  background-color: #fff;
-  border: 1px solid #555;
   border-radius: 0.25rem;
   textarea {
     width: 100%;
@@ -26,4 +24,11 @@
   background: transparent;
   background-color: #fff;
   word-break: break-word;
+}
+
+.topic_card_header {
+  display: flex;
+  align-items: center;
+  margin: 0rem !important;
+  padding: 0rem !important;
 }
