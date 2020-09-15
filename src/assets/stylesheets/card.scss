@@ -4,7 +4,7 @@
   font-size: 1rem;
   padding: 0rem !important;
   border-radius: 0.25rem;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1.25px rgba(0, 0, 0, 0.2);
   margin: 0.2rem auto;
 
   .content {
@@ -34,8 +34,6 @@
       padding-bottom: 0.125rem;
       border-radius: 0.25rem;
       text-align: right;
-
-      
     }
 
     .btns {
@@ -47,11 +45,8 @@
       button {
         display: block;
         font-size: 0.69rem;
-        text-shadow: 1px 1px 5px #555;
-        color: #fafafa;
         padding: 0.375rem !important;
       }
-      
     }
   }
 }
@@ -96,4 +91,3 @@ input[type="checkbox"] {
     padding-left: 0.25rem;
   }
 }
-

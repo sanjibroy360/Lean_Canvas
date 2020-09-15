@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import LeanCanvasBoard from "./LeanCanvas/LeanCanvasBoard";
-import { connect } from "react-redux";
-import uuid from "react-uuid";
-import { addTopics } from "../store/action";
 import Home from "./HomePage/Home";
+import Header from "./components/Header";
+import uuid from "react-uuid";
+import { connect } from "react-redux";
+import { addTopics } from "../store/action";
+import { Route, Switch } from "react-router-dom";
+import PageNotFound from "./PageNotFound/PageNotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -34,8 +37,12 @@ class App extends Component {
   render() {
     return (
       <>
-        <Home />
-        <LeanCanvasBoard />
+        <Header />
+        <Switch>
+          <Home path="/" exact />
+          <Route path="/canvas" exact component={LeanCanvasBoard} />
+          <Route component={PageNotFound} />
+        </Switch>
       </>
     );
   }
