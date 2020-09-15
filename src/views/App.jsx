@@ -41,7 +41,7 @@ class App extends Component {
         <Switch>
           <Home path="/" exact />
           <Route path="/canvas" exact component={LeanCanvasBoard} />
-          <Route component={PageNotFound} />
+          <Route path="/_error" component={PageNotFound} />
         </Switch>
       </>
     );
