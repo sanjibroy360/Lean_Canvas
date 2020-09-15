@@ -67,12 +67,10 @@
       h3 {
         font-size: 0.875rem;
         text-align: center;
-        
       }
     }
 
     .hero_image {
-     
       img {
         display: block;
         width: 80%;
@@ -84,6 +82,17 @@
   .start_btn {
     button {
       width: 48%;
+    }
+  }
+
+  .page_not_found {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img {
+      display: block;
+      width: 80%;
+      transform: translate(0%,50%); 
     }
   }
 }
