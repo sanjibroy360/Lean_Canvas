@@ -35,8 +35,6 @@ class SinglePoint extends Component {
 
   handleEditMode = (event, payload) => {
     let { point } = payload;
-    let { enablePresentaionMode } = this.props;
-    // if (enablePresentaionMode && point)
     this.setState({ editPoint: point, enableEditMode: true });
   };
 

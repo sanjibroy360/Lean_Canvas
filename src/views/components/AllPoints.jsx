@@ -18,25 +18,19 @@ class AllPoints extends Component {
     let { enablePresentationMode } = state;
 
     return (
-      <>
+      <div>
         {topic.points.map((point, index) => {
           return (
-            <>
+            <React.Fragment key={point.pointId}>
               {enablePresentationMode ? (
-                <>
-                  {" "}
-                  <SinglePoint pointInfo={point} />
-                </>
+                <SinglePoint pointInfo={point} />
               ) : (
-                <>
-                  {" "}
-                  <DraggableCards point={point} index={index} />
-                </>
+                <DraggableCards point={point} index={index} />
               )}
-            </>
+            </React.Fragment>
           );
         })}
-      </>
+      </div>
     );
   }
 }
