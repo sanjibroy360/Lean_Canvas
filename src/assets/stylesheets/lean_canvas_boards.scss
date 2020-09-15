@@ -1,10 +1,11 @@
 .container {
   background: transparent !important;
   border: none !important;
+  border-radius: 2rem;
 
-  border-radius: 0.5rem;
   .board_wrapper {
     box-shadow: 0.5px 0.5px 10px #777;
+    border-radius: 0.5rem;
   }
   .row_view {
     display: block !important;
@@ -64,19 +65,23 @@
     justify-content: space-between;
     align-items: center;
     background-color: #ddd;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     .toggle_btn {
       flex-basis: 17%;
       display: flex;
       justify-content: space-between;
       font-weight: bold;
       color: #777;
+      
     }
   }
 
   .grid_container {
     padding: 2rem;
-    width: 85%;
-    margin: 1rem auto;
+    width: 90%;
+    margin: 0rem auto;
+    margin-bottom: 2rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0.5rem;

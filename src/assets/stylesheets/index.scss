@@ -1,9 +1,11 @@
 @import "./css_reset.scss";
+@import "./header.scss";
 @import "./home.scss";
 @import "./lean_canvas_boards.scss";
 @import "./points.scss";
 @import "./card.scss";
 @import "./box_colors.scss";
+@import "./page_not_found.scss";
 @import "./media_query.scss";
 
 html,
@@ -31,7 +33,7 @@ textarea {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 

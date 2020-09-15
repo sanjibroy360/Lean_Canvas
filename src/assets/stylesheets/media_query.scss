@@ -16,13 +16,74 @@
         grid-auto-flow: row;
       }
     }
-    .canvas_header {
-      .toggle_btn {
-        flex-basis: 60%;
+    .board_wrapper {
+      box-shadow: none;
+      .canvas_header {
+        background: transparent;
+        .toggle_btn {
+          flex-basis: 60%;
+        }
       }
     }
     .view {
       display: none;
+    }
+  }
+
+  .header {
+    background-color: rgba(25, 117, 210, 0.98);
+
+    .logo {
+      justify-content: center;
+      .image {
+        flex-basis: 10% !important;
+        margin-right: 0.15rem;
+      }
+      .brand_name {
+        color: #fff;
+      }
+    }
+  }
+
+  .hero {
+    padding: 0.7rem;
+
+    .hero_text,
+    .hero_image {
+      flex-basis: 100%;
+    }
+
+    .hero_text {
+      color: rgb(44, 44, 44);
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+      p {
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 0.875rem;
+        text-align: center;
+        
+      }
+    }
+
+    .hero_image {
+     
+      img {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .start_btn {
+    button {
+      width: 48%;
     }
   }
 }

@@ -1,0 +1,28 @@
+.header {
+  // background-color: rgb(25,117,210);
+  padding: 0.5rem 0.25rem;
+  color: #fff;
+  
+
+  .logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .image {
+      flex-basis: 3.5%;
+      margin-right: 0.15rem;
+      img {
+        max-width: 100%;
+      }
+    }
+    .brand_name {
+      font-family: Helvetica, sans-serif !important;
+      font-size: 1rem;
+      color: rgb(97, 95, 95);
+      // color: #fff;
+      font-weight: 600;
+    }
+  }
+}
