@@ -26,14 +26,14 @@ class Home extends Component {
         </div>
         <Link to="/canvas">
           <nobr>
-          <div className="start_btn">
-            <Button positive size="large" animated>
-              <Button.Content visible>Get Started</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow right" />
-              </Button.Content>
-            </Button>
-          </div>
+            <div className="start_btn">
+              <Button positive size="large" animated>
+                <Button.Content visible>Get Started</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow right" />
+                </Button.Content>
+              </Button>
+            </div>
           </nobr>
         </Link>
       </div>

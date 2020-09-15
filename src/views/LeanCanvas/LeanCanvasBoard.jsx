@@ -4,6 +4,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { reorderPoints, togglePresentationMode } from "../../store/action";
 import { Checkbox } from "semantic-ui-react";
 import CanvasGridUi from "./CanvasGridUi";
+// import Print from "../components/Print";
 
 class LeanCanvasBoard extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class LeanCanvasBoard extends Component {
       enablePresentationMode: false,
       gridView: true,
     };
+   
   }
 
   handlePresentationMode = () => {
@@ -40,6 +42,7 @@ class LeanCanvasBoard extends Component {
     return reorderPoints(list, this.props.dispatch);
   };
   onDragEnd = (response) => {
+    console.log(response);
     let { topics } = this.props;
     let { droppableId } = response.source;
     let sourceIndex = response.source.index;
@@ -75,11 +78,16 @@ class LeanCanvasBoard extends Component {
                 <div onClick={this.handleRowView}>
                   <i className="fas fa-bars"></i>
                 </div>
+                {/* <div>
+                  <button id="printBtn">Print</button>
+                </div> */}
               </div>
             </div>
 
-            <CanvasGridUi gridView={gridView} />
+            <CanvasGridUi gridView={gridView}  />
+            
           </DragDropContext>
+         
         </div>
       </div>
     );

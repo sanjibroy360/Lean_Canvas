@@ -5,6 +5,7 @@ import AllPoints from "./AllPoints";
 
 function SingleTopic(props) {
   let { topic, boxNo, enablePresentationMode } = props;
+  
   let { topicName, topicId } = topic;
   let icons = [
     "https://img.icons8.com/dusk/32/000000/lock-2.png",
