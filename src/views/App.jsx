@@ -7,30 +7,21 @@ import { connect } from "react-redux";
 import { addTopics } from "../store/action";
 import { Route, Switch } from "react-router-dom";
 import PageNotFound from "./PageNotFound/PageNotFound";
+import { defaultInput } from "../utils/defaultInput";
 
 class App extends Component {
   componentDidMount() {
-    let topics = [
-      "Problem",
-      "Existing alternative",
-      "Solution",
-      "Key Metrics",
-      "Unique value proposition",
-      "High-Level concept",
-      "Unfair advantage",
-      "Channels",
-      "Customer segment",
-      "Early addopters",
-      "Cost structure",
-      "Revenue streams",
-    ];
-    let payload = topics.map((topic) => {
-      return {
-        topicId: uuid(),
-        topicName: topic,
-        points: [],
-      };
-    });
+    let payload = [];
+    for (let i = 0; i < defaultInput.length; i++) {
+      let currentTopic = defaultInput[i];
+      currentTopic.topicId = uuid();
+
+      for (let j = 0; j < currentTopic.points.length; j++) {
+        currentTopic.points[j].topicId = currentTopic.topicId;
+        currentTopic.points[j].pointId = uuid();
+      }
+      payload.push(currentTopic);
+    }
 
     return addTopics(payload, this.props.dispatch);
   }
