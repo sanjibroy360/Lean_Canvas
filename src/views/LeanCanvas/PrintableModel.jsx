@@ -1,16 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import SingleTopic from "../components/SingleTopic";
+import ReactToPrint from "react-to-print";
 
 class CanvasGridUi extends React.Component {
   render() {
     let { topics, gridView } = this.props;
-
+    
     return (
       <>
         <ul
-          className={gridView ? "grid_container" : "grid_container row_view"}
+          className={
+            gridView
+              ? "grid_container page-break"
+              : "grid_container row_view page-break"
+          }
           key="wrapper"
+          id="divcontents"
         >
           {topics.map((topic, collumnNo) => {
             return (
@@ -44,4 +50,27 @@ function mapStateToProps({ topics }) {
   return { topics };
 }
 
-export default connect(mapStateToProps)(CanvasGridUi);
+class Print extends React.Component {
+  render() {
+    if(this.props.isPrinting) {
+      document.getElementById("printBtn").click();
+    }
+    return (
+      <>
+        <ReactToPrint
+          trigger={() => {
+            return <button id="printBtn"> Print this </button> ;
+          }}
+          content={() => this.componentRef}
+        />
+        <CanvasGridUi
+          gridView={this.props.gridView}
+          topics={this.props.topics}
+          ref={(el) => (this.componentRef = el)}
+        />
+      </>
+    );
+  }
+}
+
+export default connect(mapStateToProps)(Print);

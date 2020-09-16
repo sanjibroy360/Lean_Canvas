@@ -22,7 +22,7 @@ class App extends Component {
       }
       payload.push(currentTopic);
     }
-    console.log(payload, "default Input");
+
     return addTopics(payload, this.props.dispatch);
   }
   render() {

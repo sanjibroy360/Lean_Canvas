@@ -68,12 +68,14 @@
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     .toggle_btn {
-      flex-basis: 17%;
+      
       display: flex;
       justify-content: space-between;
       font-weight: bold;
       color: #777;
-      
+      nobr {
+        margin-left: 0.35rem;
+      }
     }
   }
 

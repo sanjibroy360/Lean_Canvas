@@ -4,6 +4,10 @@
     .card {
       background-color: #ce93d8;
       color: #fff;
+      .btns button {
+        color: #fff;
+        text-shadow: 1px 1px 5px rgb(71, 71, 71);
+      }
     }
   }
 

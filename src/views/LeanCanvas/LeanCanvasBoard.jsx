@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
 import { reorderPoints, togglePresentationMode } from "../../store/action";
 import { Checkbox } from "semantic-ui-react";
-import CanvasGridUi from "./CanvasGridUi";
-// import Print from "../components/Print";
+
+import PrintableModel from "./PrintableModel";
 
 class LeanCanvasBoard extends Component {
   constructor() {
@@ -12,8 +12,8 @@ class LeanCanvasBoard extends Component {
     this.state = {
       enablePresentationMode: false,
       gridView: true,
+      print: false,
     };
-   
   }
 
   handlePresentationMode = () => {
@@ -51,8 +51,13 @@ class LeanCanvasBoard extends Component {
     console.log(response);
     return this.reorder(list, sourceIndex, destIndex);
   };
+
+  handlePrint = () => {
+    this.setState({ print: !this.state.print });
+  };
+
   render() {
-    let { enablePresentationMode, gridView } = this.state;
+    let { enablePresentationMode, gridView, print } = this.state;
 
     return (
       <div className="container">
@@ -78,16 +83,18 @@ class LeanCanvasBoard extends Component {
                 <div onClick={this.handleRowView}>
                   <i className="fas fa-bars"></i>
                 </div>
-                {/* <div>
-                  <button id="printBtn">Print</button>
-                </div> */}
+                <div className="print">
+                  <img
+                    src="https://img.icons8.com/ios-filled/24/000000/print.png"
+                    alt="Print"
+                    onClick={this.handlePrint}
+                  />
+                </div>
               </div>
             </div>
 
-            <CanvasGridUi gridView={gridView}  />
-            
+            <PrintableModel gridView={gridView} isPrinting={print} />
           </DragDropContext>
-         
         </div>
       </div>
     );
