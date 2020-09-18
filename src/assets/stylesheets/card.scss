@@ -52,19 +52,28 @@
 }
 
 .card:hover {
+  cursor: pointer;
+}
+
+.draggable_card:hover {
   cursor: grab;
+}
+
+.preview_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .small_text {
   font-size: 0.75rem;
-  position: relative;
-  bottom: 0.18rem;
-  left: 0.1rem;
+  margin-left: 0.25rem;
   font-weight: 600;
   color: #777;
 }
 input[type="checkbox"] {
   width: 0.65rem !important;
+  cursor: pointer;
 }
 .btn_wrapper {
   width: 100%;

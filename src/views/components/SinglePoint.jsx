@@ -75,7 +75,9 @@ class SinglePoint extends Component {
             )}
           </>
         ) : (
-          <div className="card">
+          <div
+            className={enablePresentationMode ? "card" : "card draggable_card"}
+          >
             <div className="content">
               <div className="text">
                 <ReactMarkdown escapeHtml={false}>
