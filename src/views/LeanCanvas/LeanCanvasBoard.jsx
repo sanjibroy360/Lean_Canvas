@@ -80,7 +80,7 @@ class LeanCanvasBoard extends Component {
                 <div onClick={this.handleRowView}>
                   <Button circular icon="list" />
                 </div>
-                <div className="print">
+                <div className="save">
                   <Button circular icon="save" onClick={this.handleSave} />
                 </div>
                 
