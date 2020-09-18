@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
 import { reorderPoints, togglePresentationMode } from "../../store/action";
-import { Checkbox } from "semantic-ui-react";
+import { Checkbox, Button } from "semantic-ui-react";
 
-import PrintableModel from "./PrintableModel";
+import ExportableModel from "./ExportableModel";
 
 class LeanCanvasBoard extends Component {
   constructor() {
@@ -74,26 +74,19 @@ class LeanCanvasBoard extends Component {
               </div>
               <div className="view">
                 <div onClick={this.handleGridView}>
-                  <img
-                    src="https://img.icons8.com/fluent-systems-regular/30/000000/activity-grid.png"
-                    alt=""
-                  />
+                  <Button circular icon="grid layout" />
                 </div>
 
                 <div onClick={this.handleRowView}>
-                  <i className="fas fa-bars"></i>
+                  <Button circular icon="list" />
                 </div>
                 <div className="print">
-                  <img
-                    src="https://img.icons8.com/ios-filled/24/000000/print.png"
-                    alt="Print"
-                    onClick={this.handlePrint}
-                  />
+                  <Button circular icon="save" onClick={this.handlePrint} />
                 </div>
               </div>
             </div>
 
-            <PrintableModel gridView={gridView} isPrinting={print} />
+            <ExportableModel gridView={gridView} isPrinting={print} />
           </DragDropContext>
         </div>
       </div>

@@ -1,12 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import SingleTopic from "../components/SingleTopic";
-import ReactToPrint from "react-to-print";
+import { exportComponentAsJPEG } from "react-component-export-image";
 
-class CanvasGridUi extends React.Component {
+class ExportableModel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.componentRef = React.createRef();
+  }
+
+  exportCanvas = () => {
+    exportComponentAsJPEG(this.componentRef);
+  };
   render() {
     let { topics, gridView } = this.props;
-    
+    let printBtn = document.getElementById("print_btn") || "";
+    if (this.props.isPrinting) {
+      console.log();
+      printBtn.click();
+    }
     return (
       <>
         <ul
@@ -15,6 +27,7 @@ class CanvasGridUi extends React.Component {
               ? "grid_container page-break"
               : "grid_container row_view page-break"
           }
+          ref={this.componentRef}
           key="wrapper"
           id="divcontents"
         >
@@ -41,36 +54,16 @@ class CanvasGridUi extends React.Component {
             );
           })}
         </ul>
+
+        <button id="print_btn" onClick={this.exportCanvas}>
+          Export As JPEG
+        </button>
       </>
     );
   }
 }
-
 function mapStateToProps({ topics }) {
   return { topics };
 }
 
-class Print extends React.Component {
-  render() {
-    if(this.props.isPrinting) {
-      document.getElementById("printBtn").click();
-    }
-    return (
-      <>
-        <ReactToPrint
-          trigger={() => {
-            return <button id="printBtn"> Print this </button> ;
-          }}
-          content={() => this.componentRef}
-        />
-        <CanvasGridUi
-          gridView={this.props.gridView}
-          topics={this.props.topics}
-          ref={(el) => (this.componentRef = el)}
-        />
-      </>
-    );
-  }
-}
-
-export default connect(mapStateToProps)(Print);
+export default connect(mapStateToProps)(ExportableModel);
