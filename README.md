@@ -1,6 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Lean Canvas
 
-<img src="./src/assets/media/images/demo_canvas.png">
+A web interface that can accept content for a lean canvas as Markdown.
+
+Users can add points to a specific block. Points in the same block can be reordered by performing drag and drop. Enabling presentation mode to showcase the lean canvas and printing out the same can also be done. The user also has an option to change the view from the grid view to the list view and vice-versa.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

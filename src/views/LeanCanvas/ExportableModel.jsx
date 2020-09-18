@@ -13,10 +13,9 @@ class ExportableModel extends React.Component {
     exportComponentAsJPEG(this.componentRef);
   };
   render() {
-    let { topics, gridView } = this.props;
-    let printBtn = document.getElementById("print_btn") || "";
-    if (this.props.isPrinting) {
-      console.log();
+    let { topics, gridView, isExporting } = this.props;
+    let printBtn = document.getElementById("save_btn") || "";
+    if (isExporting) {
       printBtn.click();
     }
     return (
@@ -55,7 +54,7 @@ class ExportableModel extends React.Component {
           })}
         </ul>
 
-        <button id="print_btn" onClick={this.exportCanvas}>
+        <button id="save_btn" onClick={this.exportCanvas}>
           Export As JPEG
         </button>
       </>
