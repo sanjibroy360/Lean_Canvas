@@ -12,7 +12,7 @@ class LeanCanvasBoard extends Component {
     this.state = {
       enablePresentationMode: false,
       gridView: true,
-      print: false,
+      save: false,
     };
   }
 
@@ -52,12 +52,12 @@ class LeanCanvasBoard extends Component {
     return this.reorder(list, sourceIndex, destIndex);
   };
 
-  handlePrint = () => {
-    this.setState({ print: !this.state.print });
+  handleSave = () => {
+    this.setState({ export: !this.state.export });
   };
 
   render() {
-    let { enablePresentationMode, gridView, print } = this.state;
+    let { enablePresentationMode, gridView, save } = this.state;
 
     return (
       <div className="container">
@@ -81,12 +81,13 @@ class LeanCanvasBoard extends Component {
                   <Button circular icon="list" />
                 </div>
                 <div className="print">
-                  <Button circular icon="save" onClick={this.handlePrint} />
+                  <Button circular icon="save" onClick={this.handleSave} />
                 </div>
+                
               </div>
             </div>
 
-            <ExportableModel gridView={gridView} isPrinting={print} />
+            <ExportableModel gridView={gridView} isExporting={save} />
           </DragDropContext>
         </div>
       </div>

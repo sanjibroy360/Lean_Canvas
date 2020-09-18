@@ -1,7 +1,7 @@
 @media all and (max-width: 768px) {
   html,
   body {
-    font-size: 10px;
+    font-size: 13px !important;
   }
   .container {
     max-width: 7650px;
@@ -18,8 +18,10 @@
     }
     .board_wrapper {
       box-shadow: none;
+
       .canvas_header {
         width: 100%;
+        margin: 0rem auto;
         background: transparent;
         .toggle_btn {
           flex-basis: 40%;
@@ -27,11 +29,14 @@
       }
     }
     .view {
-      flex-basis: 10%;
-      visibility: hidden;
-      .print {
-        visibility: visible;
-        font-size: 0.875rem;
+      button {
+        display: none;
+      }
+      .save {
+        button {
+          display: block !important;
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -52,27 +57,38 @@
   }
 
   .hero {
-    padding: 0.7rem;
-
+    padding: 1rem !important;
+    
     .hero_text,
     .hero_image {
-      flex-basis: 100%;
+      flex-basis: 100% !important;
     }
 
     .hero_text {
       color: rgb(44, 44, 44);
+      max-width: 85%;
+
+      margin: 0 auto;
       h1 {
-        font-size: 2rem;
+        font-size: 2rem !important;
         text-align: center;
       }
       p {
-        font-size: 0.75rem;
+        font-size: 0.68rem !important;
         text-align: center;
       }
 
       h3 {
-        font-size: 0.875rem;
+        font-size: 0.875rem !important;
         text-align: center;
+      }
+      .start_btn {
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 1rem 0rem;
+          width: 50% !important;
+        }
       }
     }
 
@@ -82,12 +98,6 @@
         width: 80%;
         margin: 0 auto;
       }
-    }
-  }
-
-  .start_btn {
-    button {
-      width: 48%;
     }
   }
 

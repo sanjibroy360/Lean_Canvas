@@ -8,11 +8,10 @@
   margin: 0.2rem auto;
 
   .content {
-    padding: 0 !important;
+    padding: 0.25rem !important;
 
     * {
       word-break: break-word;
-      // font-size: 1.05rem;
     }
     li {
       word-break: break-word;
@@ -23,7 +22,7 @@
       width: 100% !important;
       position: relative;
       left: 0.25rem;
-      font-size: 0.875rem !important;
+      font-size: 0.97rem !important;
     }
 
     button {
@@ -45,7 +44,7 @@
       margin: 0;
       button {
         display: block;
-        font-size: 0.69rem;
+        font-size: 0.71rem;
         padding: 0.375rem !important;
       }
     }
