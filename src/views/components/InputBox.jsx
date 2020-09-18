@@ -20,7 +20,7 @@ function InputBox(props) {
         onChange={handleInput}
       ></textarea>
       {value.trim() && (
-        <>
+        <div className="preview_wrapper">
           <input
             type="checkbox"
             name="preview"
@@ -28,7 +28,7 @@ function InputBox(props) {
             onChange={handlePreview}
           />
           <span className="small_text">Preview text</span>
-        </>
+        </div>
       )}
 
       <div className="btn_wrapper">
