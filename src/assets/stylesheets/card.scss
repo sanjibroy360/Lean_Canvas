@@ -52,6 +52,10 @@
 }
 
 .card:hover {
+  cursor: pointer;
+}
+
+.draggable_card:hover {
   cursor: grab;
 }
 
@@ -60,7 +64,6 @@
   justify-content: flex-start;
   align-items: center;
 }
-
 
 .small_text {
   font-size: 0.75rem;
