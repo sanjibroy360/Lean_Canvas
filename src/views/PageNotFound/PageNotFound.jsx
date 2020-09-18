@@ -1,5 +1,5 @@
 import React from "react";
-import PageNotFoundImage from "../../assets/media/images/page_not_found2.png";
+import PageNotFoundImage from "../../assets/media/images/page_not_found.png";
 
 function PageNotFound(props) {
   return (

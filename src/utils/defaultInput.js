@@ -6,7 +6,7 @@ export const defaultInput = [
         point: "Difficult to find a tutor of spcific subject around you.",
       },
       {
-        point: "Its hard to ensure if the tutors are good.",
+        point: "Its hard to ensure if the tutor is good.",
       },
     ],
   },
@@ -25,7 +25,7 @@ export const defaultInput = [
     topicName: "Solution",
     points: [
       {
-        point: "Students can seach tutors based on location,fees and reviews.",
+        point: "Students can seach tutors based on location, fees and reviews.",
       },
       {
         point:
@@ -50,7 +50,7 @@ export const defaultInput = [
       },
       {
         point:
-          "After availing the premium subscription teacher can give students badges according to their performances.",
+          "After availing the premium subscription teacher can give students badges according to their performances and will able to add labels and highlight community feed's post.",
       },
     ],
   },
@@ -71,7 +71,7 @@ export const defaultInput = [
       },
       {
         point:
-          "Student have multiple parameters like tution fees, reviews, distance to filter the search",
+          "Student have multiple parameters like tution fees, reviews, distance, teaching experience to filter the search",
       },
     ],
   },
@@ -134,21 +134,9 @@ export const defaultInput = [
       {
         point: "Advertising",
       },
+      {
+        point: "Premium subscription",
+      },
     ],
   },
 ];
-
-// let topics = [
-//   "Problem",
-//   "Existing alternative",
-//   "Solution",
-//   "Key Metrics",
-//   "Unique value proposition",
-//   "High-Level concept",
-//   "Unfair advantage",
-//   "Channels",
-//   "Customer segment",
-//   "Early addopters",
-//   "Cost structure",
-//   "Revenue streams",
-// ];

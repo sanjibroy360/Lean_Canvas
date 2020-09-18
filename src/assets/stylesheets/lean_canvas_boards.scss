@@ -82,6 +82,7 @@
   .grid_container {
     padding: 2rem;
     width: 95%;
+    
     margin: 0rem auto;
     margin-bottom: 2rem;
     display: grid;
@@ -112,10 +113,8 @@
 
     .inner_wrapper {
       display: grid;
-
-      grid-auto-rows: minmax(198px, auto);
       div {
-        padding: 0.35rem;
+        padding: 0.2rem;
       }
     }
   }

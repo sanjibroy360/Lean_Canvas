@@ -1,10 +1,10 @@
-@media only screen and (max-width: 768px) {
+@media all and (max-width: 768px) {
   html,
   body {
     font-size: 10px;
   }
   .container {
-    // max-width: 768px;
+    max-width: 7650px;
     margin: 0 auto;
     .grid_container {
       width: 100% !important;
@@ -19,16 +19,19 @@
     .board_wrapper {
       box-shadow: none;
       .canvas_header {
+        width: 100%;
         background: transparent;
         .toggle_btn {
-          flex-basis: 60%;
+          flex-basis: 40%;
         }
       }
     }
     .view {
+      flex-basis: 10%;
       visibility: hidden;
       .print {
         visibility: visible;
+        font-size: 0.875rem;
       }
     }
   }
@@ -98,36 +101,4 @@
       transform: translate(0%, 50%);
     }
   }
-}
-
-@media print {
-  html,
-  body {
-    height: initial !important;
-    overflow: initial !important;
-    -webkit-print-color-adjust: exact;
-  }
-}
-
-@media print {
-  .page-break {
-    margin-top: 1rem;
-    display: block;
-    page-break-before: auto;
-    .topic {
-      padding: 0.25rem;
-      margin-bottom: 2.75rem;
-      .topic_card_header {
-        padding-top: 0.8rem !important;
-      }
-      .card {
-        padding: 0.45rem !important;
-      }
-    }
-  }
-}
-
-@page {
-  size: portrait;
-  margin: 5mm;
 }
