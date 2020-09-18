@@ -6,6 +6,12 @@ Users can add points to a specific block. Points in the same block can be reorde
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Demo
+
+Live link: https://lean-canvas-360.netlify.app/
+
+![Lean Canvas](https://github.com/sanjibroy360/Lean_Canvas/blob/master/src/assets/media/images/demo_lean_canvas.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
