@@ -10,8 +10,6 @@ import {
 } from "./action/types";
 
 let initialState = {
-  projectName: "",
-  date: "",
   topics: [],
   enablePresentationMode: false
 };
